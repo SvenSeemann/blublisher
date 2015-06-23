@@ -5,6 +5,5 @@ server 'sven_1und1', roles: %w(app web db), primary: true, user: 'root'
 set :ssh_options, {
     forward_agent: false,
     auth_methods: %w(publickey),
-    password: 'user_roots_password',
     user: 'root',
 }

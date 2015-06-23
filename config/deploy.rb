@@ -3,9 +3,13 @@ set :repo_url,  "https://github.com/SvenSeemann/blublisher.git"
 set :deploy_to, "/var/www/blublisher"
 set :scm, :git
 set :branch, "master"
+
 set :user, "root"
 set :group, ""
-set :use_sudo, false
+set :pty, true
+
+set :format, :pretty
+
 set :rails_env, "production"
 set :deploy_via, :copy
 set :keep_releases, 5
