@@ -11,7 +11,7 @@ set :deploy_via, :copy
 set :keep_releases, 5
 set :passenger_restart_command, '-i passenger-config restart-app'
 
-server "sven_1und1", user: 'root'
+server "sven_1und1", user: 'root', roles: [:app, :web, :db], primary: true
 
 namespace :deploy do
   task :start do ; end
