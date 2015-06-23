@@ -9,6 +9,7 @@ set :use_sudo, false
 set :rails_env, "production"
 set :deploy_via, :copy
 set :keep_releases, 5
+set :passenger_restart_command, '-i passenger-config restart-app'
 
 server "sven_1und1", user: 'root'
 
@@ -32,7 +33,7 @@ namespace :deploy do
 
   desc "Restart applicaiton"
   task :restart do
-    run "#{ try_sudo } touch #{ File.join(current_path, 'tmp', 'restart.txt') }"
+    execute :touch, release_path.join(current_path, 'tmp', 'restart.txt')
   end
 end
 
