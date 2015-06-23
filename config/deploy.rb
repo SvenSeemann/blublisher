@@ -33,7 +33,9 @@ namespace :deploy do
 
   desc "Restart applicaiton"
   task :restart do
-    execute :touch, release_path.join(current_path, 'tmp', 'restart.txt')
+    on "root@sven_1und1" do
+      execute :touch, release_path.join(current_path, 'tmp', 'restart.txt')
+    end
   end
 end
 
