@@ -1,0 +1,9 @@
+<h1>Kategorien</h1>
+<% @categories.each do |c| %>
+  <h2><%= c.name %></h2>
+  <% c.articles.each do |a| %>
+    <h3><%= a.title %></h3>
+    <p><%= a.body %></p>
+  <% end %>
+<% end %>
+
