@@ -9,6 +9,8 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
 
+    @article.category = Category.find(category_params[:category_id].to_i)
+
     unless(@article.save)
       #TODO: show error page
     end
@@ -24,5 +26,9 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(:title, :body)
+  end
+
+  def category_params
+    params.require(:article).permit(:category_id)
   end
 end
