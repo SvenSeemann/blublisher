@@ -2,22 +2,16 @@ set :application, "Blublisher"
 set :repo_url,  "https://github.com/SvenSeemann/blublisher.git"
 set :deploy_to, "/var/www/blublisher"
 set :scm, :git
-set :branch, "master"
 
-set :user, "root"
-set :group, ""
-set :pty, true
+set :ssh_options, {
+  forward_agent: true,
+  port: 3456
+}
 
-set :format, :pretty
-
-set :rails_env, "production"
-set :deploy_via, :copy
-set :keep_releases, 5
-set :passenger_restart_command, '-i passenger-config restart-app'
-
+set :log_level, :info
 server "sven_1und1", user: 'root', roles: [:app, :web, :db], primary: true
 
-set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
 
 SSHKit.config.command_map[:rake]  = "bundle exec rake" #8
@@ -35,3 +29,4 @@ namespace :deploy do
   end
 
   after :finishing, "deploy:cleanup"
+end
