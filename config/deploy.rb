@@ -2,6 +2,7 @@ set :application, "Blublisher"
 set :repo_url,  "https://github.com/SvenSeemann/blublisher.git"
 set :deploy_to, "/var/www/blublisher"
 set :scm, :git
+set :branch, "master"
 
 set :ssh_options, {
   forward_agent: true,
