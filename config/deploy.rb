@@ -17,32 +17,21 @@ set :passenger_restart_command, '-i passenger-config restart-app'
 
 server "sven_1und1", user: 'root', roles: [:app, :web, :db], primary: true
 
+set :linked_files, %w{config/database.yml config/config.yml}
+set :linked_dirs, %w{bin log tmp vendor/bundle public/system}
+
+SSHKit.config.command_map[:rake]  = "bundle exec rake" #8
+SSHKit.config.command_map[:rails] = "bundle exec rails"
+
+set :keep_releases, 20
+
 namespace :deploy do
-  task :start do ; end
-  task :stop do ; end
 
-  desc "Symlink shared config files"
-  task :symlink_config_files do
-    run "#{ sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
-  end
-
-  # NOTE: I don't use this anymore, but this is how I used to do it.
-  desc "Precompile assets after deploy"
-  task :precompile_assets do
-    run <<-CMD
-      cd #{ current_path } &&
-      #{ sudo } bundle exec rake assets:precompile RAILS_ENV=#{ rails_env }
-    CMD
-  end
-
-  desc "Restart applicaiton"
+  desc "Restart application"
   task :restart do
-    on "root@sven_1und1" do
-      execute :touch, release_path.join(current_path, 'tmp', 'restart.txt')
+    on roles(:app), in: :sequence, wait: 5 do
+      execute :touch, release_path.join("tmp/restart.txt")
     end
   end
-end
 
-after "deploy", "deploy:symlink_config_files"
-after "deploy", "deploy:restart"
-after "deploy", "deploy:cleanup"
+  after :finishing, "deploy:cleanup"
