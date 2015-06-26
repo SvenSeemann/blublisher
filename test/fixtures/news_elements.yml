@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  newsletterable_type: MyString
+  newsletterable_id: 1
+  newsletter_id: 1
+
+two:
+  newsletterable_type: MyString
+  newsletterable_id: 1
+  newsletter_id: 1

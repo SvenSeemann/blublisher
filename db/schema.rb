@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150623110349) do
+ActiveRecord::Schema.define(version: 20150626190508) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -22,15 +22,21 @@ ActiveRecord::Schema.define(version: 20150623110349) do
     t.integer  "category_id"
   end
 
-  create_table "articles_categories", force: :cascade do |t|
-    t.integer  "category_id"
-    t.integer  "article_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "news_elements", force: :cascade do |t|
+    t.string   "newsletterable_type"
+    t.integer  "newsletterable_id"
+    t.integer  "newsletter_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "newsletters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
