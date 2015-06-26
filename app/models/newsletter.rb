@@ -1,4 +1,4 @@
 class Newsletter < ActiveRecord::Base
 
-  has_many :elements
+  has_many :news_elements
 end

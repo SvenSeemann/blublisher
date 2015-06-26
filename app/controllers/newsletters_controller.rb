@@ -4,6 +4,7 @@ class NewslettersController < ApplicationController
 
   def new
     @newsletter = Newsletter.new
+    @newsletter.save!
   end
 
   def new_element
@@ -18,12 +19,15 @@ class NewslettersController < ApplicationController
     @element = nil
 
     if !params[:article][:id].blank? && params[:element_type] == 'Article'
-      @element = save_element_article(params[:article][:id].to_i).newsletterable
+      @element = save_element_article(params[:article][:id].to_i)
     end
 
+    newsletter = Newsletter.find(params[:newsletter_id])
+    newsletter.news_elements << @element
+    newsletter.save
+
     @partial = find_partial_show(params[:element_type])
-
-
+    @element = @element.newsletterable
     respond_to do |format|
       format.js
     end

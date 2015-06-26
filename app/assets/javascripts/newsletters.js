@@ -1,3 +1,7 @@
+function get_newsletter_id() {
+  return $('#newsletter_id').val();
+}
+
 function append_new_element_wrapper() {
   current_wrapper = document.getElementById('new_element_wrapper');
   $(current_wrapper).attr("id", "insert-after");
@@ -22,11 +26,13 @@ function add_element(element_type) {
 }
 
 function save_element (element_type, wrapper_id) {
+  newsletter_id = get_newsletter_id();
   $.ajax({
     url : 'newsletter/element/save',
     data : {
       'element_type' : element_type,
-      'target' : wrapper_id
+      'target' : wrapper_id,
+      'newsletter_id' : newsletter_id
     }
   });
 }
