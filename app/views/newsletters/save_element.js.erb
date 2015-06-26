@@ -1,1 +1,2 @@
-$("<%= '#{@target}'  %>").html("<%= escape_javascript(render partial: @partial) %>");
+$("#to-modify").html("<%= escape_javascript(render partial: @partial) %>");
+remove_to_modify($("#to-modify"));

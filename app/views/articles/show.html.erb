@@ -1,4 +1,4 @@
 <h1>Titel: <%= @article.title %></h1>
 <p>
-  <%= @article.body %>
+  <%= @article.body.html_safe %>
 </p>

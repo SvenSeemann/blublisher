@@ -5,6 +5,14 @@ function append_new_element_wrapper() {
   $(current_wrapper).attr("id","");
 }
 
+function set_parent_to_modify (element) {
+  var parent_element = $(element).parent();
+  parent_element.attr("id", "to-modify");
+}
+
+function remove_to_modify(element) {
+  element.attr("id", "");
+}
 
 function add_element(element_type) {
   $.ajax({

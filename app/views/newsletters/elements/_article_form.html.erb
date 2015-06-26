@@ -1,5 +1,6 @@
 Create your article:
-<%= form_tag '/newsletter/element/save', remote: true do %>
-  <%= collection_select(:article, :id, Article.all, :id, :name) %>
+<%= form_tag '/newsletter/element/save', remote: true, onsubmit: 'set_parent_to_modify(this)' do %>
+  <%= hidden_field_tag :element_type, 'Article' %>
+  <%= collection_select(:article, :id, Article.all, :id, :title) %>
   <%= submit_tag %>
 <% end %>

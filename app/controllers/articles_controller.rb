@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     @article.user = current_user
 
-    @article.category = Category.find(category_params[:category_id].to_i)
+    @article.category = Category.find(category_params[:category_id].to_i) unless category_params[:category_id].blank?
 
     unless(@article.save)
       #TODO: show error page
