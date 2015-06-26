@@ -1,4 +1,5 @@
 Create your article:
-<%= form_tag '' do %>
+<%= form_tag '/newsletter/element/save', remote: true do %>
+  <%= collection_select(:article, :id, Article.all, :id, :name) %>
   <%= submit_tag %>
 <% end %>

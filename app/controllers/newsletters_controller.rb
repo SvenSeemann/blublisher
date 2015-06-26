@@ -7,10 +7,19 @@ class NewslettersController < ApplicationController
   end
 
   def new_element
-    @partial = find_partial(params[:element_type])
+    @partial = find_partial_new(params[:element_type])
 
     respond_to do |format|
-      format.js # actually means: if the client ask for js -> return file.js
+      format.js
+    end
+  end
+
+  def save_element
+    element_type = params[:element_type].classify.constantize
+    @element = element_type.create(params[:element])
+    @partial = find_partial_show(params[:element_type])
+    respond_to do |format|
+      format.js
     end
   end
 end
