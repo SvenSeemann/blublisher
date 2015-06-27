@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627002742) do
+ActiveRecord::Schema.define(version: 20150627103744) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150627002742) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "color"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -44,12 +45,20 @@ ActiveRecord::Schema.define(version: 20150627002742) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "starts_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "news_elements", force: :cascade do |t|
     t.string   "newsletterable_type"
     t.integer  "newsletterable_id"
     t.integer  "newsletter_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "category_id"
   end
 
   create_table "newsletters", force: :cascade do |t|
@@ -61,6 +70,18 @@ ActiveRecord::Schema.define(version: 20150627002742) do
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "upcoming_elements", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "upcoming_elements_events", force: :cascade do |t|
+    t.integer  "upcoming_element_id"
+    t.string   "event_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|

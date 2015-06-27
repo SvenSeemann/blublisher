@@ -37,6 +37,7 @@ gem 'devise'
 
 gem 'ckeditor'
 gem 'paperclip'
+gem "simple_calendar"
 
 # Use unicorn as the app server
 gem 'unicorn'

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  upcoming_element_id: 1
+  event_id: MyString
+
+two:
+  upcoming_element_id: 1
+  event_id: MyString

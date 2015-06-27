@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events
   mount Ckeditor::Engine => '/ckeditor'
 
   get 'newsletter/element/new', to: 'newsletters#new_element'
