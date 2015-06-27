@@ -1,16 +1,16 @@
 <%= hidden_field_tag :newsletter_id, @newsletter.id %>
 
-<h1>Newsletters#new</h1>
-<p>Find me in app/views/newsletters/new.html.erb</p>
-
-<%= form_tag('/') do %>
-  <%= submit_tag %>
-<% end -%>
+<h1>Newsletter erstellen</h1>
+<div class="form-group">
+  <label for="newsletter-title">Titel</label>
+  <input type="text" id="newsletter-title" class="form-control" />
+</div>
 
 <div id="new_element_wrapper">
 
 </div>
 
+<hr>
 <div class="dropdown">
   <button class="btn btn-default dropdown-toggle" type="button" id="new_element_btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Neues Element hinzufügen
@@ -21,4 +21,6 @@
     <li><a href="#" onclick="add_element('Upcoming')">Events</a></li>
     <li><a href="#" onclick="add_element('Slider')">Slider</a></li>
   </ul>
+  <input type="submit" class="btn btn-large" value="Speichern">
+  </input>
 </div>

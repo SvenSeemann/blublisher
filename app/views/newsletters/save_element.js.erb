@@ -1,2 +1,2 @@
-$("#to-modify").html("<%= escape_javascript(render partial: @partial) %>");
+$("#to-modify").html("<%= escape_javascript(render partial: @partial, locals: {element:  @element.news_element }) %>");
 remove_to_modify($("#to-modify"));

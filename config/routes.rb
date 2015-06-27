@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'newsletter/element/save', to: 'newsletters#save_element'
 
   get 'newsletters/new', to: 'newsletters#new'
+  get 'newsletters/:id', to: 'newsletters#show'
 
 
   root to: 'static#home'

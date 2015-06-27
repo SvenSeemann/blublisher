@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blublisher</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+<style type="text/css">
+body {
+        padding: 20px 0;
+}
+
+#page-wrapper {
+        background: #fff;
+        -moz-box-shadow:    0 0 8px 0 rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
+        box-shadow:         0 0 8px 0 rgba(0, 0, 0, 0.1);
+        margin: 0 50px;
+        width: 90%;
+}
+
+#logo {
+        padding: 40px 50px 30px;
+}
+
+#sticky-header {
+        background-color: #000;
+        color: #fff;
+        height: 60px;
+        width: 100%;
+}
+
+#sticky-header ul {
+        list-style-type: none;
+        margin: 0 10px;
+        padding: 10px 40px 15px;
+        -moz-box-shadow:    0 12px 5px -6px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 12px 5px -6px rgba(0, 0, 0, 0.5);
+        box-shadow:         0 12px 5px -6px rgba(0, 0, 0, 0.5);
+}
+
+#sticky-header ul li {
+        display: inline;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 0 20px;
+}
+
+#sticky-header ul li a {
+        color: #fff;
+        text-decoration: none;
+}
+
+#sticky-header ul li a:hover {
+        color: #c9e0f7;
+}
+
+#page-content {
+        padding: 0px auto;
+}
+</style>
+</head>
+<body>
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+  <div style="width: 100%; height: 100%;">
+    <%= image_tag('newsletter_header.png', style: 'width: 100%; height: auto;', id: 'newsletter-header-img') %>
+  </div>
+  <div id="page-wrapper">
+    <div id="sticky-header">
+      <ul>
+        <li>Vorwort</li>
+        <li>Was gibt es Neues?</li>
+        <li>Events</li>
+        <li>Stellenangebote</li>
+      </ul>
+    </div>
+    <div id="page-content">
+      <%= yield %>
+    </div>
+  </div>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>v
+  l<br/>
+  v
+  l<br/>
+  l<br/>
+  l<br/>
+  v
+
+  v
+  v
+  v
+  vl<br/>
+
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+  l<br/>
+
+<script type="text/javascript">
+$(function(){
+
+  var stickyRibbonTop = $('#sticky-header').offset().top;
+
+  $(window).scroll(function(){
+          if( $(window).scrollTop() > stickyRibbonTop ) {
+                  $('#sticky-header').css({position: 'fixed', top: '0px'});
+          } else {
+                  $('#sticky-header').css({position: 'static', top: '0px'});
+          }
+  });
+});
+</script>
+
+</body>
+</html>

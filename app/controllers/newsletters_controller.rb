@@ -2,6 +2,12 @@ class NewslettersController < ApplicationController
 
   include NewslettersHelper
 
+  def show
+    @newsletter = Newsletter.find(params[:id])
+
+    render layout: 'newsletter'
+  end
+
   def new
     @newsletter = Newsletter.new
     @newsletter.save!
@@ -21,7 +27,7 @@ class NewslettersController < ApplicationController
     if !params[:article].nil? && params[:element_type] == 'Article'
       @element = save_element_article(params[:article][:id], params[:category][:category_id])
     elsif params[:element_type] == 'Upcoming'
-      @element = save_element_upcoming(params[:upcoming], params[:category][:category_id])
+      @element = save_element_upcoming(params[:from], params[:to], params[:category][:category_id])
     end
 
     newsletter = Newsletter.find(params[:newsletter_id])
@@ -47,9 +53,12 @@ class NewslettersController < ApplicationController
       return news_element
     end
 
-    def save_element_upcoming(upcoming, category_id)
-      from_date = Date.new upcoming["from(1i)"].to_i, upcoming["from(2i)"].to_i, upcoming["from(3i)"].to_i
-      to_date = Date.new upcoming["to(1i)"].to_i, upcoming["to(2i)"].to_i, upcoming["to(3i)"].to_i
+    def save_element_upcoming(from, to, category_id)
+
+      date_split = from.split("/")
+      from_date = Date.new date_split[2].to_i, date_split[0].to_i, date_split[1].to_i
+      date_split = to.split("/")
+      to_date = Date.new date_split[2].to_i, date_split[0].to_i, date_split[1].to_i
       news_element = NewsElement.new
 
       upcoming_element = UpcomingElement.new

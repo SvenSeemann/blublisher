@@ -1,6 +1,6 @@
-<div style='background-color: <%= "#{ @element.news_element.category.color }" %>'>
-  <h1>Titel: <%= @element.title %></h1>
+<div class="news-element" style='background-color: <%= "#{ element.category.color }" %>'>
+  <h1>Titel: <%= element.newsletterable.title %></h1>
   <p>
-    <%= @element.body.html_safe %>
+    <%= element.newsletterable.body.html_safe %>
   </p>
 </div>

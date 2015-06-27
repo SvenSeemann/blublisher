@@ -12,6 +12,7 @@ end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem "twitter-bootstrap-rails"
+gem "font-awesome-rails"
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -38,6 +39,7 @@ gem 'devise'
 gem 'ckeditor'
 gem 'paperclip'
 gem "simple_calendar"
+gem 'bootstrap-datepicker-rails'
 
 # Use unicorn as the app server
 gem 'unicorn'
