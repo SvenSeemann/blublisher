@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627103744) do
+ActiveRecord::Schema.define(version: 20150701153147) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -45,11 +45,31 @@ ActiveRecord::Schema.define(version: 20150627103744) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employment_notices", force: :cascade do |t|
+    t.string   "businessName"
+    t.string   "businessPhone"
+    t.string   "businessMail"
+    t.string   "businessStreet"
+    t.string   "businessCity"
+    t.string   "businessPostalcode"
+    t.string   "description"
+    t.integer  "department_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.datetime "starts_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
   end
 
   create_table "news_elements", force: :cascade do |t|
