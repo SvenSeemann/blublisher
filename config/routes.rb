@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'employment_notices/new'
+
+  get 'employment_notices/index'
+
+  get 'employment_notices/show'
+
   get 'epmloyment_notices/new'
 
   get 'epmloyment_notices/create'
