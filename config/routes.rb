@@ -1,20 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'employment_notices/new'
-
-  get 'employment_notices/index'
-
-  get 'employment_notices/show'
-
-  get 'epmloyment_notices/new'
-
-  get 'epmloyment_notices/create'
-
-  get 'epmloyment_notices/index'
-
-  get 'epmloyment_notices/show'
-
-
+  resources :employment_notices
   resources :departments
   resources :events
   mount Ckeditor::Engine => '/ckeditor'

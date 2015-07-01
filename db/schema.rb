@@ -52,16 +52,16 @@ ActiveRecord::Schema.define(version: 20150701153147) do
   end
 
   create_table "employment_notices", force: :cascade do |t|
-    t.string   "businessName"
-    t.string   "businessPhone"
-    t.string   "businessMail"
-    t.string   "businessStreet"
-    t.string   "businessCity"
-    t.string   "businessPostalcode"
+    t.string   "business_name"
+    t.string   "business_phone"
+    t.string   "business_mail"
+    t.string   "business_street"
+    t.string   "business_city"
+    t.string   "business_postalcode"
     t.string   "description"
     t.integer  "department_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "events", force: :cascade do |t|
