@@ -1,0 +1,24 @@
+<div>
+  <%= form_tag '/newsletter/element/save', remote: true, onsubmit: 'set_parent_to_modify(this)' do %>
+    <%= hidden_field_tag :element_type, 'Upcoming' %>
+    <%= hidden_field_tag :newsletter_id, Newsletter.last.id %>
+
+    <div class="form-group">
+      <label for="from-field">Von</label>
+      <input type="text" class="datepicker form-control" name="from" id="from-field" />
+    </div>
+
+    <div class="form-group">
+      <label for="to-field">Bis</label>
+      <input type="text" class="datepicker form-control" name="to" id="to-field">
+    </div>
+
+    <div class="form-group">
+      <label for="category-field">Kategorie</label>
+
+      <%= collection_select(:category, :category_id, Category.all, :id, :name, {}, {class: 'form-control', id: 'category-field'}) %>
+    </div>
+
+    <%= submit_tag "Speichern", class: 'btn btn-large' %>
+  <% end %>
+</div>
