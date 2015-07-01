@@ -19,6 +19,10 @@
     <%= f.label :starts_at %><br>
     <%= f.datetime_select :starts_at %>
   </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.cktext_area :description, class: 'form-control', id: 'body-input'  %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

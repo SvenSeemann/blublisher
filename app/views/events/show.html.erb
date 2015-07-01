@@ -10,5 +10,11 @@
   <%= @event.starts_at %>
 </p>
 
+<p>
+  <strong>Description:</strong>
+  <%= @event.description.html_safe if !@event.description.blank? %>
+  <%= "Keine Beschreibung vorhanden." if @event.description.blank? %>
+</p>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
