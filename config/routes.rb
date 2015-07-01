@@ -1,5 +1,19 @@
 Rails.application.routes.draw do
 
+  get 'epmloyment_notices/new'
+
+  get 'epmloyment_notices/create'
+
+  get 'epmloyment_notices/index'
+
+  get 'epmloyment_notices/show'
+
+  get 'departments/new'
+
+  get 'departments/create'
+
+  get 'departments/index'
+
   resources :events
   mount Ckeditor::Engine => '/ckeditor'
 
