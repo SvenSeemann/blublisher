@@ -5,12 +5,16 @@ class DepartmentsController < ApplicationController
     render layout: 'admin'
   end
 
+  def show
+    @department = Department.find(params[:id])
+  end
+
   def create
     @department = Department.new(department_params)
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to @department, notice: 'Fachbereich wurde erfolgreich angelegt.' }
+        format.html { redirect_to :index, notice: 'Fachbereich wurde erfolgreich angelegt.' }
       else
         format.html { render :new, layout: "admin" }
       end
@@ -18,6 +22,9 @@ class DepartmentsController < ApplicationController
   end
 
   def index
+    @departments = Department.all
+
+    render layout: 'admin'
   end
 
   private # -----------------------------------------------------

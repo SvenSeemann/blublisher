@@ -1,2 +1,7 @@
-<h1>Departments#index</h1>
-<p>Find me in app/views/departments/index.html.erb</p>
+<h1>Fachbereiche</h1>
+
+<ul>
+  <% @departments.each do |d| %>
+    <li><%= d.name %></li>
+  <% end %>
+</ul>
