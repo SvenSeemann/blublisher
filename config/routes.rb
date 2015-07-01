@@ -8,12 +8,8 @@ Rails.application.routes.draw do
 
   get 'epmloyment_notices/show'
 
-  get 'departments/new'
 
-  get 'departments/create'
-
-  get 'departments/index'
-
+  resources :departments
   resources :events
   mount Ckeditor::Engine => '/ckeditor'
 
