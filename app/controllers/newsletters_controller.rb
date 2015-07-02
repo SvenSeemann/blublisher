@@ -71,4 +71,8 @@ class NewslettersController < ApplicationController
 
       return news_element
     end
+
+    def save_employment_notices(notices)
+      # TODO: add employment_notices to newsletter
+    end
 end

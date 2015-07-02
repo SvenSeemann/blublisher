@@ -1,0 +1,24 @@
+<div>
+<h4>Stellenangebote</h4>
+
+  <div id="next-employment-notices">
+
+  </div>
+
+  <div class="department-selection-wrapper">
+    <label for="">Fachbereich auswählen</label>
+    <%= collection_select("department", "department_id", Department.all, :id, :name, {}, {class: 'form-control'}) %>
+  </div>
+</div>
+
+<script type="text/javascript" charset="utf-8" async defer>
+  $('#department_department_id').on({
+    "focus": function() {
+      this.selectedIndex = -1;
+    },
+    "change": function() {
+      department = $(this).val();
+      new_next_employment_notices();
+    }
+  });
+</script>
