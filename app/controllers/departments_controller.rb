@@ -7,6 +7,11 @@ class DepartmentsController < ApplicationController
 
   def show
     @department = Department.find(params[:id])
+
+    respond_to do |format|
+
+      format.json { render :show }
+    end
   end
 
   def create
