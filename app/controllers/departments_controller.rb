@@ -32,6 +32,14 @@ class DepartmentsController < ApplicationController
     render layout: 'admin'
   end
 
+  def get_employment_notices
+    @employment_notices = Department.find(params[:id]).employment_notices
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private # -----------------------------------------------------
 
     def department_params

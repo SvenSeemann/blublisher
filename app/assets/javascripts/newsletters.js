@@ -5,6 +5,12 @@ function new_next_employment_notices () {
     $(old_element).attr('id', '');
 }
 
+function get_emplyoment_notices(department_id) {
+  $.ajax({
+    url: '/departments/' + department_id + '/employment_notices'
+  });
+}
+
 function get_newsletter_id() {
   return $('#newsletter_id').val();
 }

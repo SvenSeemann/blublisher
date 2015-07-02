@@ -7,14 +7,11 @@ class EmploymentNoticesController < ApplicationController
 
   def create
     @employment_notice = EmploymentNotice.new(employment_notice_params)
-
-
-      if @employment_notice.save
-        redirect_to employment_notice_path(@employment_notice)
-      else
-        #TODO: error
-      end
-
+    if @employment_notice.save
+      redirect_to employment_notice_path(@employment_notice)
+    else
+      #TODO: error
+    end
   end
 
   def index
