@@ -32,13 +32,12 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :keep_releases, 5
 
 namespace :deploy do
-
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 1, wait: 10 do
       within release_path do
+        execute :rake, 'db:migrate'
         execute :rake, 'assets:precompile'
       end
     end
   end
-
 end
