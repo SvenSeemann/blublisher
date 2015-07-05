@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server '87.106.49.145', user: 'root', roles: %w{app}
+server '87.106.49.145', user: 'rails', roles: %w{app}
 
 
 
@@ -44,7 +44,7 @@ server '87.106.49.145', user: 'root', roles: %w{app}
 # Global options
 # --------------
 set :ssh_options, {
-  keys: %w(/root/.ssh/sven_1und1),
+  keys: %w(/Users/svenseemann/.ssh/sven_1und1),
   forward_agent: true,
   paranoid: true,
   auth_methods: %w(publickey)

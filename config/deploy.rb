@@ -9,7 +9,7 @@ set :repo_url, 'git@github.com:SvenSeemann/blublisher.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/var/www/blublisher'
-
+set :tmp_dir, "#{fetch(:home)}/tmp"
 set :keep_releases, 5
 
 # Config for puma
@@ -34,7 +34,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 namespace :deploy do
 
   after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    on roles(:web), in: :groups, limit: 1, wait: 10 do
       within release_path do
         execute :rake, 'assets:precompile'
       end
