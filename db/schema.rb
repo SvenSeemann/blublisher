@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150627103744) do
+ActiveRecord::Schema.define(version: 20150702093825) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -45,9 +45,42 @@ ActiveRecord::Schema.define(version: 20150627103744) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], name: "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_ckeditor_assetable_type"
 
+  create_table "departments", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "employment_notices", force: :cascade do |t|
+    t.string   "business_name"
+    t.string   "business_phone"
+    t.string   "business_mail"
+    t.string   "business_street"
+    t.string   "business_city"
+    t.string   "business_postalcode"
+    t.string   "description"
+    t.integer  "department_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "title"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "name"
     t.datetime "starts_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
+  end
+
+  create_table "job_wall_element_employment_notices", force: :cascade do |t|
+    t.integer  "employment_notice_id"
+    t.integer  "job_wall_element_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "job_wall_elements", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

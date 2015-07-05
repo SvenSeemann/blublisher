@@ -1,0 +1,14 @@
+<h4>Fachbereich: <%= @department.name %> </h4>
+<fieldset>
+  <% @department.employment_notices.each do |en| %>
+  <label for="employment_notice_<%= en.id %>">
+      <input
+        type="checkbox"
+        name="employment_notice"
+        value="<%= en.id %>"
+        id="employment_notice_<%= en.id %>"
+      />
+      <%= "#{en.title - en.business_name}" %>
+  </label>
+  <% end %>
+</fieldset>

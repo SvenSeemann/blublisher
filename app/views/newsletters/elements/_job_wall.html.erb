@@ -1,0 +1,8 @@
+<% element.newsletterable.employment_notices.each do |en| %>
+  <% if en.title.blank? %>
+    <%= "Stellenangebot von #{en.business_name}" %>
+  <% else %>
+    <%= en.title %>
+  <% end %>
+  <br />
+<% end %>

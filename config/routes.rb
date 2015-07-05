@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :employment_notices
+
+  get 'departments/:id/employment_notices', to: 'departments#get_employment_notices'
+  resources :departments
+
   resources :events
   mount Ckeditor::Engine => '/ckeditor'
 

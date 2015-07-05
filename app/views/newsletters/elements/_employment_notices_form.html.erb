@@ -1,0 +1,16 @@
+<div class="departments-wrapper">
+  <fieldset>
+    <legend>title or explanatory caption</legend>
+    <% @employment_notices.each do |en| %>
+    <label for="employment_notice_<%= en.id %>">
+        <input
+          type="checkbox"
+          name="employment_notice"
+          value="<%= en.id %>"
+          id="employment_notice_<%= en.id %>"
+        />
+        <%= "#{en.title - en.business_nameq}" %>
+    </label>
+    <% end %>
+  </fieldset>
+</div>

@@ -1,0 +1,45 @@
+<h1>Neues Stellenangebot erstellen</h1>
+<%= form_for(@employe_notice) do |d| %>
+  <div class="field">
+    <%= d.label :business_name, "Firmenname" %>
+    <%= d.text_field :business_name %>
+  </div>
+    <div class="field">
+    <%= d.label :business_phone, "Telefon" %>
+    <%= d.text_field :business_phone %>
+  </div>
+  <div class="field">
+    <%= d.label :business_mail, "Email" %>
+    <%= d.text_field :business_mail %>
+  </div>
+  <div class="field">
+    <%= d.label :business_street, "Straße Hausnr." %>
+    <%= d.text_field :business_street %>
+  </div>
+  <div class="field">
+    <%= d.label :business_postalcode, "PLZ" %>
+    <%= d.text_field :business_postalcode %>
+  </div>
+  <div class="field">
+    <%= d.label :business_city, "Stadt" %>
+    <%= d.text_field :business_city %>
+  </div>
+  <div class="field">
+    <%= d.label :description, "Beschreibung" %>
+    <%= d.cktext_area :description %>
+  </div>
+  <div class="field">
+    <%= d.label :department, "Fachgebiet" %>
+    <%= d.collection_select(
+      :department_id,
+      Department.all,
+      :id, :name,
+      {},
+      { class: 'form-control', id: 'department-input'}
+    ) %>
+  </div>
+  <div class="actions">
+    <%= d.submit %>
+  </div>
+
+<% end %>

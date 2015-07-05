@@ -1,0 +1,2 @@
+json.department @department
+json.employment_notices @department.employment_notices

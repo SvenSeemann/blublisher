@@ -1,0 +1,30 @@
+<div>
+<%= form_tag '/newsletter/element/save', remote: true, onsubmit: 'set_parent_to_modify(this)' do %>
+  <h4>Stellenangebote</h4>
+    <%= hidden_field_tag :element_type, 'EmploymentNotice' %>
+    <%= hidden_field_tag :newsletter_id, Newsletter.last.id %>
+
+    <div id="next-employment-notices">
+
+    </div>
+
+    <div class="department-selection-wrapper">
+      <label for="">Fachbereich auswählen</label>
+      <%= collection_select("department", "department_id", Department.all, :id, :name, {}, {class: 'form-control'}) %>
+    </div>
+    <input type="submit" />
+<% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8" async defer>
+  $('#department_department_id').on({
+    "focus": function() {
+      this.selectedIndex = -1;
+    },
+    "change": function() {
+      department = $(this).val();
+      new_next_employment_notices();
+      get_emplyoment_notices(department);
+    }
+  });
+</script>
