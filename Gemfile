@@ -52,6 +52,7 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
