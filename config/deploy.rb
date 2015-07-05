@@ -1,90 +1,44 @@
+# config valid only for current version of Capistrano
+lock '3.4.0'
+
 set :application, 'blublisher'
-set :deploy_user, 'root'
+set :repo_url, 'ssh://git@github.com:SvenSeemann/blublisher.git'
 
-# setup repo details
-set :scm, :git
-set :repo_url, 'git@github.com:SvenSeemann/blublisher.git'
+# Default branch is :master
+# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# setup rvm.
-set :rvm_ruby_version, '2.1.5'
+# Default deploy_to directory is /var/www/my_app_name
+set :deploy_to, '/var/www/blublisher'
 
-# how many old releases do we want to keep
 set :keep_releases, 5
 
-# files we want symlinking to specific entries in shared.
-set :linked_files, %w{config/database.yml}
+# Config for puma
+set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_preload_app, true
+set :puma_init_active_record, true
 
-# dirs we want symlinking to shared
+
+
+# Default value for :linked_files is []
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+
+# Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-# what specs should be run before deployment is allowed to
-# continue, see lib/capistrano/tasks/run_tests.cap
-set :tests, []
+# Default value for default_env is {}
+# set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
-# which config files should be copied by deploy:setup_config
-# see documentation in lib/capistrano/tasks/setup_config.cap
-# for details of operations
-set(:config_files, %w(
-  nginx.conf
-  database.example.yml
-  log_rotation
-  monit
-  unicorn.rb
-  unicorn_init.sh
-))
-
-# which config files should be made executable after copying
-# by deploy:setup_config
-set(:executable_config_files, %w(
-  unicorn_init.sh
-))
-
-# files which need to be symlinked to other parts of the
-# filesystem. For example nginx virtualhosts, log rotation
-# init scripts etc.
-set(:symlinks, [
-  {
-    source: "apache2.conf",
-    link: "/etc/apache2/sites-enabled/#{fetch(:full_app_name)}"
-  },
-  {
-    source: "unicorn_init.sh",
-    link: "/etc/init.d/unicorn_#{fetch(:full_app_name)}"
-  },
-  {
-    source: "log_rotation",
-   link: "/etc/logrotate.d/#{fetch(:full_app_name)}"
-  },
-  {
-    source: "monit",
-    link: "/etc/monit/conf.d/#{fetch(:full_app_name)}.conf"
-  }
-])
-
-
-# this:
-# http://www.capistranorb.com/documentation/getting-started/flow/
-# is worth reading for a quick overview of what tasks are called
-# and when for `cap stage deploy`
+# Default value for keep_releases is 5
+# set :keep_releases, 5
 
 namespace :deploy do
-  # make sure we're deploying what we think we're deploying
-  before :deploy, "deploy:check_revision"
-  # only allow a deploy with passing tests to deployed
-  before :deploy, "deploy:run_tests"
-  # compile assets locally then rsync
-  after 'deploy:symlink:shared'
-  after :finishing, 'deploy:cleanup'
 
-  # reload nginx to it will pick up any modified vhosts from
-  # setup_config
-  after 'deploy:setup_config', 'apache:reload'
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      within release_path do
+        execute :rake, 'assets:precompile'
+      end
+    end
+  end
 
-  # Restart monit so it will pick up any monit configurations
-  # we've added
-  after 'deploy:setup_config', 'monit:restart'
-
-  # As of Capistrano 3.1, the `deploy:restart` task is not called
-  # automatically.
-  after 'deploy:publishing', 'deploy:restart'
 end

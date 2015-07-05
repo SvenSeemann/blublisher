@@ -1,6 +1,5 @@
 <h4>Fachbereich: <%= @department.name %> </h4>
 <fieldset>
-  <legend>title or explanatory caption</legend>
   <% @department.employment_notices.each do |en| %>
   <label for="employment_notice_<%= en.id %>">
       <input
@@ -9,7 +8,7 @@
         value="<%= en.id %>"
         id="employment_notice_<%= en.id %>"
       />
-      <%= "#{en.title - en.business_nameq}" %>
+      <%= "#{en.title - en.business_name}" %>
   </label>
   <% end %>
 </fieldset>

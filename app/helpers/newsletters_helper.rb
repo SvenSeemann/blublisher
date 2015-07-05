@@ -17,8 +17,8 @@ module NewslettersHelper
       return 'newsletters/elements/article'
     when 'Upcoming'
       return 'newsletters/elements/upcoming'
-    when 'Slider'
-      return 'newsletters/elements/slider'
+    when 'EmploymentNotice'
+      return 'newsletters/elements/job_wall'
     end
   end
 

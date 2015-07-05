@@ -1,5 +1,4 @@
-<% employment_notices.each do |en| %>
-  <input type="checkbox" name="employment_notice[]" value="<%= en.id %>" />
+<% element.newsletterable.employment_notices.each do |en| %>
   <% if en.title.blank? %>
     <%= "Stellenangebot von #{en.business_name}" %>
   <% else %>

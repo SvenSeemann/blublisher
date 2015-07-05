@@ -28,6 +28,8 @@ class NewslettersController < ApplicationController
       @element = save_element_article(params[:article][:id], params[:category][:category_id])
     elsif params[:element_type] == 'Upcoming'
       @element = save_element_upcoming(params[:from], params[:to], params[:category][:category_id])
+    elsif params[:element_type] == 'EmploymentNotice'
+      @element = save_employment_notices(params[:employment_notice])
     end
 
     newsletter = Newsletter.find(params[:newsletter_id])
@@ -54,7 +56,6 @@ class NewslettersController < ApplicationController
     end
 
     def save_element_upcoming(from, to, category_id)
-
       date_split = from.split("/")
       from_date = Date.new date_split[2].to_i, date_split[0].to_i, date_split[1].to_i
       date_split = to.split("/")
@@ -73,6 +74,16 @@ class NewslettersController < ApplicationController
     end
 
     def save_employment_notices(notices)
-      # TODO: add employment_notices to newsletter
+      news_element = NewsElement.new
+
+      job_wall_element = JobWallElement.new
+
+      job_wall_element.employment_notices = EmploymentNotice.where(id: notices)
+      job_wall_element.save
+
+      news_element.newsletterable = job_wall_element
+      news_element.save
+
+      return news_element
     end
 end

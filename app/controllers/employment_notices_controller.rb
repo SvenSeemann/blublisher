@@ -26,6 +26,7 @@ class EmploymentNoticesController < ApplicationController
       params
         .require(:employment_notice)
         .permit(
+          :title,
           :business_name,
           :business_phone,
           :business_mail,
