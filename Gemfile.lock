@@ -96,6 +96,9 @@ GEM
     jbuilder (2.3.0)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
+    jquery-minicolors-rails (2.1.4.0)
+      jquery-rails
+      rails (>= 3.2.8)
     jquery-rails (4.0.4)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -223,6 +226,7 @@ DEPENDENCIES
   devise
   font-awesome-rails
   jbuilder (~> 2.0)
+  jquery-minicolors-rails
   jquery-rails
   mysql2
   paperclip
