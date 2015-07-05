@@ -46,6 +46,7 @@ server '87.106.49.145', user: 'root', roles: %w{app}
 set :ssh_options, {
   keys: %w(/root/.ssh/sven_1und1),
   forward_agent: true,
+  paranoid: true,
   auth_methods: %w(publickey)
 }
 #
