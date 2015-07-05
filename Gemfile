@@ -40,7 +40,7 @@ gem 'ckeditor'
 gem 'paperclip'
 gem "simple_calendar"
 gem 'bootstrap-datepicker-rails'
-
+gem 'capistrano-faster-assets', '~> 1.0'
 gem 'puma'
 
 # Use Capistrano for deployment
