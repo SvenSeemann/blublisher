@@ -15,6 +15,9 @@ class EmploymentNoticesController < ApplicationController
   end
 
   def index
+    @notices = EmploymentNotice.all
+
+    render layout: 'admin'
   end
 
   def show
