@@ -1,5 +1,11 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :new, :create ]
+  before_action :authenticate_user!, except: [:show, :new, :create, :index]
+
+  def index
+    @articles = Article.all
+
+    render layout: 'admin'
+  end
 
   def new
     @article = Article.new

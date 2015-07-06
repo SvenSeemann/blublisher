@@ -28,13 +28,24 @@
     </div>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Übersicht<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/categories">Kategorien</a></li>
+            <li><a href="/articles">Artikel</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/departments">Branchen</a></li>
+            <li><a href="/employment_notices">Stellenanzeigen</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Erstellen<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/articles/new">Artikel</a></li>
             <li><a href="/categories/new">Kategorie</a></li>
             <li><a href="/events/new">Event</a></li>
+            <li><a href="/departments/new">Branche</a></li>
+            <li><a href="/employment_notices/new">Stellenanzeige</a></li>
           </ul>
         </li>
       </ul>
