@@ -4,10 +4,14 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+
+    render layout: 'admin'
   end
 
   def show
     @category = Category.find(params[:id])
+
+    render layout: 'admin'
   end
 
   def create

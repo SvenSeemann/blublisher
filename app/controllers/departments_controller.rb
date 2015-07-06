@@ -10,7 +10,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
 
-      format.json { render :show }
+      format.json { render :show, layout: 'admin' }
     end
   end
 
