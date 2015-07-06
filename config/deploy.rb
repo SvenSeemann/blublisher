@@ -17,7 +17,7 @@ set :puma_conf, "#{shared_path}/puma.rb"
 set :puma_preload_app, true
 set :puma_init_active_record, true
 
-
+set :ssh_options, :compression => false, :keepalive => true
 
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
