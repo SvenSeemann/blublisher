@@ -1,0 +1,14 @@
+<div>
+  <div style="width: 100%; height: auto;">
+    <%= image_tag('newsletter_header.png', style: 'width: 100%; height: auto;', id: 'newsletter-header-img') %>
+  </div>
+  <div>
+    <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
+      <div class="category-wrapper" style="background-color: <%= category.color %>;">
+        <% elements.each do |element| %>
+        <%= render partial: NewslettersHelper.find_partial_mail(element.newsletterable.class.to_s), :locals => {element: element} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

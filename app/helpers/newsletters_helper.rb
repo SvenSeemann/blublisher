@@ -1,5 +1,4 @@
 module NewslettersHelper
-
   def find_partial_new(element_type)
     case(element_type)
     when 'Article'
@@ -22,4 +21,14 @@ module NewslettersHelper
     end
   end
 
+  def self.find_partial_mail(element_type)
+    case(element_type)
+    when "Article"
+      return 'newsletters/elements/mail/article'
+    when 'UpcomingElement'
+      return 'newsletters/elements/mail/upcoming'
+    when 'JobWallElement'
+      return 'newsletters/elements/mail/job_wall'
+    end
+  end
 end
