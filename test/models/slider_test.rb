@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: sliders
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require 'test_helper'
 
 class SliderTest < ActiveSupport::TestCase
