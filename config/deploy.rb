@@ -36,7 +36,7 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 1, wait: 10 do
       within release_path do
         execute :rake, 'db:migrate'
-        execute :rake, 'assets:precompile'
+        #execute :rake, 'assets:precompile'
       end
     end
   end
