@@ -1,5 +1,20 @@
 <html>
-  <body>
-    <%= yield %>
+  <style type="text/css" media="screen">
+    .newsletter-element {
+      border: 1px solid black;
+      border-radius: 20px;
+    }
+    .employment-notice {
+      padding-left: 10%;
+    }
+
+    .category-wrapper {
+      padding: 5%;
+    }
+  </style>
+  <body style="">
+    <div class="container" style="width: 90%; margin: 0 auto;">
+      <%= yield %>
+    </div>
   </body>
 </html>
