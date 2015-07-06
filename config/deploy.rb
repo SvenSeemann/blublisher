@@ -32,35 +32,29 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :keep_releases, 5
 
 namespace :deploy do
-  namespace :assets do
-
-    Rake::Task['deploy:assets:precompile'].clear_actions
-
-    desc 'Precompile assets locally and upload to servers'
-    task :precompile do
-      on roles(fetch(:assets_roles)) do
-        run_locally do
-          with rails_env: fetch(:rails_env) do
-            execute 'bin/rake assets:precompile'
-          end
-        end
-
-        within release_path do
-          with rails_env: fetch(:rails_env) do
-            upload!('./public/assets/', "#{shared_path}/public/", { recursive: true, mode: 777 } )
-          end
-        end
-
-        run_locally { execute 'rm -rf public/assets' }
-      end
-    end
-
-  end
+  after :updated, "assets:precompile"
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 1, wait: 10 do
       within release_path do
         execute :rake, 'db:migrate'
+      end
+    end
+  end
+end
+
+namespace :assets do
+  desc "Precompile assets locally and then rsync to web servers"
+  task :precompile do
+    on roles(:web) do
+      rsync_host = host.to_s # this needs to be done outside run_locally in order for host to exist
+      run_locally do
+        with rails_env: fetch(:stage) do
+          execute :bundle, "exec rake assets:precompile"
+        end
+        execute "rsync -av --delete ./public/assets/ #{fetch(:user)}@#{rsync_host}:#{shared_path}/public/assets/"
+        execute "rm -rf public/assets"
+        # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
       end
     end
   end
