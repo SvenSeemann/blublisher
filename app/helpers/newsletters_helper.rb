@@ -22,4 +22,15 @@ module NewslettersHelper
     end
   end
 
+  def find_partial_mail(element_type)
+    case(element_type)
+    when 'Article'
+      return 'newsletters/elements/mail/article'
+    when 'Upcoming'
+      return 'newsletters/elements/mail/upcoming'
+    when 'EmploymentNotice'
+      return 'newsletters/elements/mail/job_wall'
+    end
+  end
+
 end

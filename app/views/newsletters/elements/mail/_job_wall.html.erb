@@ -1,0 +1,22 @@
+<% element.newsletterable.employment_notices.each do |en| %>
+<div>
+  <h2>
+    <% if en.title.blank? %>
+      <%= "Stellenangebot von #{en.business_name}" %>
+    <% else %>
+      <%= en.title %>
+    <% end %>
+  </h2>
+  <p>Branche: <%= "#{en.department.name}" %></p>
+  <address>
+    <strong><%= "#{en.business_name}" %></strong>
+    <strong><%= "#{en.business_street}" %></strong>
+    <strong><%= "#{en.business_postalcode} #{en.business_city}" %></strong>
+    <strong><%= "#{en.business_mail}" %></strong>
+    <strong><%= "#{en.business_phone}" %></strong>
+  </address>
+  <div>
+    <%= en.description %>
+  </div>
+</div>
+<% end %>

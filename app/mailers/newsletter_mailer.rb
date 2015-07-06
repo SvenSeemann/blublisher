@@ -6,8 +6,9 @@ class NewsletterMailer < ApplicationMailer
   #   en.newsletter_mailer.current_newsletter.subject
   #
   def current_newsletter
-    @greeting = "Hi"
+    @newsletter = Newsletter.last
 
     mail to: "to@example.org"
+    render layout: 'mailer'
   end
 end
