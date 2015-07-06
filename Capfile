@@ -19,6 +19,7 @@ require 'capistrano/rvm'
 # require 'capistrano/rbenv'
 # require 'capistrano/chruby'
 require 'capistrano/bundler'
+require 'capistrano/local_precompile'
 require 'capistrano/rails/migrations'
 require 'capistrano/puma'
 
