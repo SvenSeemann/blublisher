@@ -12,6 +12,13 @@
       <label for="">Fachbereich auswählen</label>
       <%= collection_select("department", "department_id", Department.all, :id, :name, {}, {class: 'form-control'}) %>
     </div>
+
+    <div class="form-group">
+      <label for="category-field">Kategorie</label>
+
+      <%= collection_select(:category, :category_id, Category.all, :id, :name, {}, {class: 'form-control', id: 'category-field'}) %>
+    </div>
+
     <input type="submit" />
 <% end %>
 </div>
