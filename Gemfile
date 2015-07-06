@@ -37,7 +37,7 @@ gem 'devise'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'annotate'
-gem 'ckeditor'
+gem 'ckeditor', github: 'SvenSeemann/ckeditor'
 gem 'paperclip'
 gem "simple_calendar"
 gem 'bootstrap-datepicker-rails'
