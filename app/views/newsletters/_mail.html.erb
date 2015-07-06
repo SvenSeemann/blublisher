@@ -11,25 +11,11 @@
   </div>
   <div id="page-content">
     <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
-    Kategorie: <%= category.name %>
-    <% elements.each do |element| %>
-    <%= render partial: find_partial_mail(element.newsletterable.class.to_s), :locals => {element: element} %>
-    <% end %>
+      Kategorie: <%= category.name %>
+      <% elements.each do |element| %>
+      <%= render partial: NewslettersHelper.find_partial_mail(element.newsletterable.class.to_s), :locals => {element: element} %>
+      <% end %>
     <% end %>
 
   </div>
 </div>
-<script type="text/javascript">
-  $(function(){
-
-    var stickyRibbonTop = $('#sticky-header').offset().top;
-
-    $(window).scroll(function(){
-      if( $(window).scrollTop() > stickyRibbonTop ) {
-        $('#sticky-header').css({position: 'fixed', top: '0px'});
-      } else {
-        $('#sticky-header').css({position: 'static', top: '0px'});
-      }
-    });
-  });
-</script>
