@@ -47,7 +47,7 @@ namespace :deploy do
 
         within release_path do
           with rails_env: fetch(:rails_env) do
-            upload!('./public/assets/', "#{shared_path}/public/", recursive: true)
+            upload!('./public/assets/', "#{shared_path}/public/", { recursive: true, mode: 777 } )
           end
         end
 
