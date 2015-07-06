@@ -29,7 +29,7 @@ class NewslettersController < ApplicationController
     elsif params[:element_type] == 'Upcoming'
       @element = save_element_upcoming(params[:from], params[:to], params[:category][:category_id])
     elsif params[:element_type] == 'EmploymentNotice'
-      @element = save_employment_notices(params[:employment_notice])
+      @element = save_employment_notices(params[:employment_notice], params[:category][:category_id])
     end
 
     newsletter = Newsletter.find(params[:newsletter_id])
@@ -73,15 +73,18 @@ class NewslettersController < ApplicationController
       return news_element
     end
 
-    def save_employment_notices(notices)
+    def save_employment_notices(notices, category_id)
       news_element = NewsElement.new
 
       job_wall_element = JobWallElement.new
 
       job_wall_element.employment_notices = EmploymentNotice.where(id: notices)
+
       job_wall_element.save
 
       news_element.newsletterable = job_wall_element
+      news_element.category = Category.find(category_id)
+
       news_element.save
 
       return news_element
