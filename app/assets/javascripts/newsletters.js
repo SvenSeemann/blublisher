@@ -1,7 +1,7 @@
 function new_next_employment_notices () {
     var old_element = document.getElementById('next-employment-notices');
     $(old_element).attr('id', 'en-insert-after');
-    $('<div id="next-employment-notices">Huehue</div>').insertAfter('#en-insert-after');
+    $('<div id="next-employment-notices"></div>').insertAfter('#en-insert-after');
     $(old_element).attr('id', '');
 }
 

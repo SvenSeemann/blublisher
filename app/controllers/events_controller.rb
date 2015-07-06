@@ -74,6 +74,8 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
+      date_split = params[:event][:starts_at].split("/")
+      params[:event][:starts_at] = Date.new date_split[2].to_i, date_split[0].to_i, date_split[1].to_i
       params.require(:event).permit(:name, :starts_at, :description)
     end
 end
