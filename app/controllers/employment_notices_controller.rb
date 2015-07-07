@@ -30,7 +30,7 @@ class EmploymentNoticesController < ApplicationController
     @employment_notice.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Stellenangebot erfolgreich gelöscht.' }
+      format.html { redirect_to employment_notices_url, notice: 'Stellenangebot erfolgreich gelöscht.' }
       format.json { head :no_content }
     end
   end
