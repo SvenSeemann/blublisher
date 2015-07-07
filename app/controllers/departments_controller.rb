@@ -19,7 +19,7 @@ class DepartmentsController < ApplicationController
 
     respond_to do |format|
       if @department.save
-        format.html { redirect_to :index, notice: 'Fachbereich wurde erfolgreich angelegt.' }
+        format.html { redirect_to departments_path, notice: 'Fachbereich wurde erfolgreich angelegt.' }
       else
         format.html { render :new, layout: "admin" }
       end

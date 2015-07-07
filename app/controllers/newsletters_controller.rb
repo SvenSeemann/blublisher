@@ -41,13 +41,14 @@ class NewslettersController < ApplicationController
 
     if !params[:article].nil? && params[:element_type] == 'Article'
       @element = save_element_article(params[:article][:id], params[:category][:category_id])
-    elsif params[:element_type] == 'Upcoming'
+    elsif params[:element_type] == 'UpcomingElement'
       @element = save_element_upcoming(params[:from], params[:to], params[:category][:category_id])
-    elsif params[:element_type] == 'EmploymentNotice'
+    elsif params[:element_type] == 'JobWallElement'
       @element = save_employment_notices(params[:employment_notice], params[:category][:category_id])
     end
 
     newsletter = Newsletter.find(params[:newsletter_id])
+    byebug
     newsletter.news_elements << @element
     newsletter.save!
 

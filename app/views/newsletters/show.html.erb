@@ -10,9 +10,8 @@
       <% end %>
     </ul>
   </div>
-  <div id="page-content">
+  <div id="page-content" style="width: 90%; margin: 0 auto;">
     <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
-    Kategorie: <%= category.name %>
     <% elements.each do |element| %>
     <%= render partial: find_partial_show(element.newsletterable.class.to_s), :locals => {element: element} %>
     <% end %>
