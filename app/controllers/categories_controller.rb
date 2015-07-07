@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index, :show, :new, :create]
+  before_action :authenticate_user!, except: [:index, :show, :new, :create, :destroy]
 
   def index
     @categories = Category.all
@@ -27,6 +27,16 @@ class CategoriesController < ApplicationController
   def new
     @category = Category.new
     render layout: "admin"
+  end
+
+  def destroy
+    @category = Category.find(params[:id])
+    @category.destroy
+
+    respond_to do |format|
+      format.html { redirect_to categories_url, notice: 'Kategorie erfolgreich gelöscht.' }
+      format.json { head :no_content }
+    end
   end
 
 
