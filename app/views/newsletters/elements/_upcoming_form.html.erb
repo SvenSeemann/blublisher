@@ -1,6 +1,6 @@
 <div>
   <%= form_tag '/newsletter/element/save', remote: true, onsubmit: 'set_parent_to_modify(this)' do %>
-    <%= hidden_field_tag :element_type, 'Upcoming' %>
+    <%= hidden_field_tag :element_type, 'UpcomingElement' %>
     <%= hidden_field_tag :newsletter_id, Newsletter.last.id %>
 
     <div class="form-group">

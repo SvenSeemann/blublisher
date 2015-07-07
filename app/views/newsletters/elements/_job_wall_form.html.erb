@@ -1,7 +1,7 @@
 <div>
 <%= form_tag '/newsletter/element/save', remote: true, onsubmit: 'set_parent_to_modify(this)' do %>
   <h4>Stellenangebote</h4>
-    <%= hidden_field_tag :element_type, 'EmploymentNotice' %>
+    <%= hidden_field_tag :element_type, 'JobWallElement' %>
     <%= hidden_field_tag :newsletter_id, Newsletter.last.id %>
 
     <div id="next-employment-notices">
