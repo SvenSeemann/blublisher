@@ -14,9 +14,9 @@ module NewslettersHelper
     case(element_type)
     when 'Article'
       return 'newsletters/elements/article'
-    when 'Upcoming'
+    when 'UpcomingElement'
       return 'newsletters/elements/upcoming'
-    when 'EmploymentNotice'
+    when 'JobWallElement'
       return 'newsletters/elements/job_wall'
     end
   end

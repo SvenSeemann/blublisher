@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'newsletters/new', to: 'newsletters#new'
   get 'newsletters/:id', to: 'newsletters#show'
+  get 'newsletters', to: 'newsletters#index'
 
 
   root to: 'static#home'
