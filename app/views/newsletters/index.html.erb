@@ -1,0 +1,6 @@
+<% @elements.each do |element| %>
+  <%= render partial: find_partial_show(element.newsletterable.class.to_s),
+            :locals => {element: element}
+  %>
+  <hr style="margin-bottom: 20px;" />
+<% end %>

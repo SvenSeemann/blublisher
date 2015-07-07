@@ -2,6 +2,10 @@ class NewslettersController < ApplicationController
 
   include NewslettersHelper
 
+  def index
+    @elements = NewsElement.all.order('created_at DESC')
+  end
+
   def show
     @newsletter = Newsletter.find(params[:id])
 

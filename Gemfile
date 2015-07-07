@@ -42,7 +42,6 @@ gem 'paperclip'
 gem "simple_calendar"
 gem 'bootstrap-datepicker-rails'
 gem 'jquery-minicolors-rails'
-gem 'capistrano-faster-assets', '~> 1.0'
 gem 'puma'
 
 # Use Capistrano for deployment

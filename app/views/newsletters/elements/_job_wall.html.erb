@@ -1,8 +1,22 @@
-<% element.newsletterable.employment_notices.each do |en| %>
-  <% if en.title.blank? %>
-    <%= "Stellenangebot von #{en.business_name}" %>
-  <% else %>
-    <%= en.title %>
-  <% end %>
-  <br />
+<div style="border: 1px solid black; border-radius: 10px;">
+  <% element.newsletterable.employment_notices.group_by(&:department).each do |department, elements| %>
+<div style="border: 1px solid black;">
+  <h3 style="padding: 10px;"><%= department.name %></h3>
+  <hr />
+  <div style="padding: 20px;">
+    <% elements.each do |element| %>
+    <address>
+      <strong><%= element.business_name %></strong><br />
+      <strong><%= element.business_street %></strong><br />
+      <strong><%= "#{element.business_postalcode} #{element.business_city}" %></strong><br />
+      <strong><%= "Tel: #{element.business_phone }" %></strong><br />
+      <strong><%= "Mail: #{element.business_mail }" %></strong>
+    </address><br />
+    <div>
+      <%= element.description.html_safe %>
+    </div>
+    <% end %>
+  </div>
+</div>
 <% end %>
+</div>
