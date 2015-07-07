@@ -39,7 +39,6 @@ namespace :deploy do
     invoke 'deploy:assets:precompile_local'
   end
 
-
   namespace :assets do
     desc "Precompile assets locally and then rsync to web servers"
     task :precompile_local do
@@ -52,7 +51,7 @@ namespace :deploy do
       local_dir = "./public/assets/"
       on roles( fetch(:assets_roles, [:web]) ) do
         # this needs to be done outside run_locally in order for host to exist
-        remote_dir = "#{host.user}@#{host.hostname}:#{release_path}/public/assets/"
+        remote_dir = "#{host.user}@#{host.hostname}:#{shared_path}/public/assets/"
 
         run_locally { execute "rsync -av --delete #{local_dir} #{remote_dir}" }
       end
