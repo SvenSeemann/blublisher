@@ -32,7 +32,37 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 # set :keep_releases, 5
 
 namespace :deploy do
-  after :updated, "assets:precompile"
+
+  desc 'Compile assets'
+  task :local_compile_assets => [:set_rails_env] do
+    # invoke 'deploy:assets:precompile'
+    invoke 'deploy:assets:precompile_local'
+  end
+
+
+  namespace :assets do
+    desc "Precompile assets locally and then rsync to web servers"
+    task :precompile_local do
+      # compile assets locally
+      run_locally do
+        execute "RAILS_ENV=#{fetch(:stage)} bundle exec rake assets:precompile"
+      end
+
+      # rsync to each server
+      local_dir = "./public/assets/"
+      on roles( fetch(:assets_roles, [:web]) ) do
+        # this needs to be done outside run_locally in order for host to exist
+        remote_dir = "#{host.user}@#{host.hostname}:#{release_path}/public/assets/"
+
+        run_locally { execute "rsync -av --delete #{local_dir} #{remote_dir}" }
+      end
+
+      # clean up
+      run_locally { execute "rm -rf #{local_dir}" }
+    end
+  end
+
+  after :updated, "deploy:local_compile_assets"
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 1, wait: 10 do
@@ -41,21 +71,6 @@ namespace :deploy do
       end
     end
   end
-end
 
-namespace :assets do
-  desc "Precompile assets locally and then rsync to web servers"
-  task :precompile do
-    on roles(:web) do
-      rsync_host = host.to_s # this needs to be done outside run_locally in order for host to exist
-      run_locally do
-        with rails_env: fetch(:stage) do
-          execute :bundle, "exec rake assets:precompile"
-        end
-        execute "rsync -av --delete ./public/assets/ #{fetch(:user)}@#{rsync_host}:#{shared_path}/public/assets/"
-        execute "rm -rf public/assets"
-        # execute "rm -rf tmp/cache/assets" # in case you are not seeing changes
-      end
-    end
-  end
+
 end
