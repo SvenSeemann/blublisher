@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :new, :create, :index]
+  before_action :authenticate_user!, except: [:show, :new, :create, :index, :destroy]
 
   def index
     @articles = Article.all
@@ -28,6 +28,17 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    respond_to do |format|
+      format.html { redirect_to categories_url, notice: 'Artikel erfolgreich gelöscht.' }
+      format.json { head :no_content }
+    end
+
   end
 
   private # --------------------------------------------------------------------

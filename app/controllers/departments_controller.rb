@@ -32,6 +32,16 @@ class DepartmentsController < ApplicationController
     render layout: 'admin'
   end
 
+  def destroy
+    @department = Department.find(params[:id])
+    @department.destroy
+
+    respond_to do |format|
+      format.html { redirect_to departments_url, notice: 'Branche erfolgreich gelöscht.' }
+      format.json { head :no_content }
+    end
+  end
+
   def get_employment_notices
     @employment_notices = Department.find(params[:id]).employment_notices
 
