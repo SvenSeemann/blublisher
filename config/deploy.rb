@@ -19,11 +19,13 @@ set :puma_init_active_record, true
 
 set :ssh_options, :compression => false, :keepalive => true
 
+set :shared_children, shared_children + %w{public/uploads}
+
 # Default value for :linked_files is []
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/ckeditor_assets')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
