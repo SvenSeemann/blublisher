@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get 'newsletter/element/new', to: 'newsletters#new_element'
   post 'newsletter/element/save', to: 'newsletters#save_element'
+  get 'newsletter/set_title', to: 'newsletters#set_title'
   get '/rails/mailers/*path' => "rails/mailers#preview"
 
   get 'newsletters/new', to: 'newsletters#new'

@@ -50,6 +50,11 @@ function save_element (element_type, wrapper_id) {
   });
 }
 
-function delete_element (element_id) {
-  // body...
+function save_title (title) {
+  $.ajax({
+    url: '/newsletter/set_title',
+    data: {
+      'title' : title
+    }
+  });
 }
