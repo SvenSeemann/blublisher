@@ -1,12 +1,12 @@
 <% element.newsletterable.events.each do |event| %>
   <div class="row">
     <div class="col-md-1" style="line-height: 100px;">
-          <i class="fa fa-calendar fa-4x"></i>
+          <i class="fa fa-calendar fa-2x"></i>
     </div>
     <div class="col-md-1" style="line-height: 100px;">
       <%= "#{event.starts_at.day}.#{event.starts_at.month}.#{event.starts_at.year}" %>
     </div>
-    <div class="col-md-5" style="line-height: 100px;">
+    <div class="col-md-2" style="line-height: 100px;">
       <%= "#{event.name}" %>
     </div>
   </div>
