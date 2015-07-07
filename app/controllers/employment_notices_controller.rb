@@ -1,4 +1,6 @@
 class EmploymentNoticesController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :new, :create, :index, :destroy]
+
   def new
     @employe_notice = EmploymentNotice.new
 
@@ -23,8 +25,17 @@ class EmploymentNoticesController < ApplicationController
   def show
   end
 
-  private
+  def destroy
+    @employment_notice = EmploymentNotice.find(params[:id])
+    @employment_notice.destroy
 
+    respond_to do |format|
+      format.html { redirect_to events_url, notice: 'Stellenangebot erfolgreich gelöscht.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
     def employment_notice_params
       params
         .require(:employment_notice)
