@@ -1,5 +1,22 @@
 <h1>Artikel</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Titel</th>
+      <th>Erstellt am</th>
+      <th>Löschen</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @articles.each do |c| %>
-  <%= link_to c.title, article_path(c) %>
+<tr>
+  <td><%= link_to c.title, article_path(c) %></td>
+  <td><%= c.created_at %></td>
+  <td>
+    <%= link_to 'Löschen',  c,  method: :delete, data: { confirm: 'Are you sure?' } %>
+  </td>
+  </tr>
 <% end %>
+  </tbody>
+</table>
 
