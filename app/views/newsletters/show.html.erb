@@ -3,7 +3,11 @@
 >
   <div style="width: 100%; height: 100%;">
     <%= image_tag('newsletter_header.png', style: 'width: 100%; height: auto;', id: 'newsletter-header-img') %>
-    <span id="newsletter-title"><%= @newsletter.title %></span>
+    <span id="newsletter-title"
+          style="position: absolute; color: #FFF;"
+    >
+      <%= @newsletter.title %>
+    </span>
   </div>
   <div id="sticky-header">
     <ul class="nav nav-tabs" role="tablist">
