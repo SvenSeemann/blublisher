@@ -9,8 +9,8 @@
       <%= @newsletter.title %>
     </span>
   </div>
-  <div id="sticky-header">
-    <ul class="nav nav-tabs" role="tablist">
+  <div id="sticky-header" style="float:none;">
+    <ul class="nav nav-tabs" role="tablist" style="width:auto;white-space: nowrap;">
       <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
         <li role="presentation"
             style=""
