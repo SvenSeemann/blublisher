@@ -1,9 +1,14 @@
 <h1>Kategorien</h1>
 <% @categories.each do |c| %>
   <h2><%= c.name %></h2>
-  <% c.articles.each do |a| %>
-    <h3><%= a.title %></h3>
-    <p><%= a.body %></p>
+  <% if c.articles.length > 0 %>
+    <% c.articles.each do |a| %>
+      <h3><%= a.title %></h3>
+      <p><%= a.body.html_safe %></p>
+    <% end %>
+  <% else %>
+    <p>Keine Artikel für diese Kategorie gefunden.</p>
   <% end %>
+  <hr>
 <% end %>
 
