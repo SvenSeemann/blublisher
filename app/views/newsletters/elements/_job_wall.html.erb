@@ -1,4 +1,4 @@
-<div style="border: 1px solid black; border-radius: 10px;">
+<div style='border: 1px solid black; border-radius: 10px; background-color: <%= "#{ element.category.color }"%>'>
   <% element.newsletterable.employment_notices.group_by(&:department).each do |department, elements| %>
 <div style="border: 1px solid black;">
   <h3 style="padding: 10px;"><%= department.name %></h3>
