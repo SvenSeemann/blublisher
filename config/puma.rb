@@ -4,7 +4,7 @@ threads 1, 1
 app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "/var/www/blublisher/shared"
 
-bind "unix://#{shared_dir}/sockets/puma.sock"
+bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
 
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 pidfile "#{shared_dir}/pids/puma.pid"

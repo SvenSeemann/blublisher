@@ -1,10 +1,14 @@
 <h1>Neues Stellenangebot erstellen</h1>
 <%= form_for(@employe_notice) do |d| %>
   <div class="field">
+    <%= d.label :title, "Titel" %>
+    <%= d.text_field :title %>
+  </div>
+  <div class="field">
     <%= d.label :business_name, "Firmenname" %>
     <%= d.text_field :business_name %>
   </div>
-    <div class="field">
+  <div class="field">
     <%= d.label :business_phone, "Telefon" %>
     <%= d.text_field :business_phone %>
   </div>

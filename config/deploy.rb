@@ -23,7 +23,7 @@ set :ssh_options, :compression => false, :keepalive => true
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
 # Default value for linked_dirs is []
-set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle')
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/ckeditor_assets')
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -39,7 +39,6 @@ namespace :deploy do
     invoke 'deploy:assets:precompile_local'
   end
 
-
   namespace :assets do
     desc "Precompile assets locally and then rsync to web servers"
     task :precompile_local do
@@ -52,7 +51,7 @@ namespace :deploy do
       local_dir = "./public/assets/"
       on roles( fetch(:assets_roles, [:web]) ) do
         # this needs to be done outside run_locally in order for host to exist
-        remote_dir = "#{host.user}@#{host.hostname}:#{release_path}/public/assets/"
+        remote_dir = "#{host.user}@#{host.hostname}:#{shared_path}/public/assets/"
 
         run_locally { execute "rsync -av --delete #{local_dir} #{remote_dir}" }
       end
