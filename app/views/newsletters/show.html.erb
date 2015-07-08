@@ -18,11 +18,16 @@
   </div>
   <div id="page-content" style="min-width: 500px; max-width: 800px; margin: 0 auto;">
     <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
-    <% elements.each do |element| %>
-      <div id="<%= category.name %>">
-        <%= render partial: find_partial_show(element.newsletterable.class.to_s), :locals => {element: element} %>
+
+    <h1 align="center"><%= category.name %></h1>
+    <hr />
+    <div id="<%= category.name %>" style="margin-bottom: 50px;">
+      <% elements.each do |element| %>
+        <div id="">
+          <%= render partial: find_partial_show(element.newsletterable.class.to_s), :locals => {element: element} %>
+        </div>
+      <% end %>
       </div>
-    <% end %>
     <% end %>
 
   </div>
