@@ -1,15 +1,23 @@
-<div style='background-color: <%= "#{element.category.color}" %>'>
+<div class="upcoming-wrapper" style='background-color: <%= "#{element.category.color}" %>'>
   <% element.newsletterable.events.each do |event| %>
   <div class="row">
-    <div class="col-md-1" style="line-height: 100px;">
+    <div class="col-md-1" style="">
           <i class="fa fa-calendar fa-2x"></i>
     </div>
-    <div class="col-md-1" style="line-height: 100px;">
-      <%= "#{event.starts_at.day}.#{event.starts_at.month}.#{event.starts_at.year}" %>
+    <div class="col-md-3" style="">
+      <h4>
+        <%= "#{event.starts_at.day}.#{event.starts_at.month}.#{event.starts_at.year}" %>
+      </h4>
     </div>
-    <div class="col-md-2" style="line-height: 100px;">
-      <%= "#{event.name}" %>
+    <div class="col-md-4" style="">
+      <h4><%= "#{event.name}" %></h4>
     </div>
   </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= event.description.html_safe %>
+    </div>
+  </div>
+  <hr />
 <% end %>
 </div>
