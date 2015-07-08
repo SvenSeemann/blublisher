@@ -1,22 +1,32 @@
-<div style='border: 1px solid black; border-radius: 10px; background-color: <%= "#{ element.category.color }"%>'>
+<div style='background-color: <%= "#{ element.category.color }"%>'
+class="panel-group" id="job-accordion" role="tablist" aria-multiselectable="true"
+>
   <% element.newsletterable.employment_notices.group_by(&:department).each do |department, elements| %>
-<div style="border: 1px solid black;">
-  <h3 style="padding: 10px;"><%= department.name %></h3>
-  <hr />
-  <div style="padding: 20px;">
-    <% elements.each do |element| %>
-    <address>
-      <strong><%= element.business_name %></strong><br />
-      <strong><%= element.business_street %></strong><br />
-      <strong><%= "#{element.business_postalcode} #{element.business_city}" %></strong><br />
-      <strong><%= "Tel: #{element.business_phone }" %></strong><br />
-      <strong><%= "Mail: #{element.business_mail }" %></strong>
-    </address><br />
-    <div>
-      <%= element.description.html_safe %>
+<div class="panel panel-default">
+  <div class="panel-heading" role="tab" id="dept-<%= department.id.to_s %>">
+    <h4 class="panel-title">
+      <a role="button" data-toggle="collapse" data-parent="#job-accordion" href="#collapse-<%= department.id.to_s %>" aria-expanded="true" aria-controls="collapse-<%= department.id.to_s %>"
+      style="text-decoration: none;">
+        <%= department.name %>
+      </a>
+    </h4>
+  </div>
+  <div id="collapse-<%= department.id.to_s %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-<%= department.id.to_s %>">
+    <div class="panel-body" style='background-color: <%= "#{ element.category.color }"%>'>
+      <% elements.each do |element| %>
+      <address>
+        <strong><%= element.business_name %></strong><br />
+        <strong><%= element.business_street %></strong><br />
+        <strong><%= "#{element.business_postalcode} #{element.business_city}" %></strong><br />
+        <strong><%= "Tel: #{element.business_phone }" %></strong><br />
+        <strong><%= "Mail: #{element.business_mail }" %></strong>
+      </address><br />
+      <div>
+        <%= element.description.html_safe %>
+      </div>
+      <hr />
+      <% end %>
     </div>
-    <hr />
-    <% end %>
   </div>
 </div>
 <% end %>
