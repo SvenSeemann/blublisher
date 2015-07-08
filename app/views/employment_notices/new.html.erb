@@ -1,38 +1,38 @@
 <h1>Neues Stellenangebot erstellen</h1>
 <%= form_for(@employe_notice) do |d| %>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :title, "Titel" %>
-    <%= d.text_field :title %>
+    <%= d.text_field :title, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_name, "Firmenname" %>
-    <%= d.text_field :business_name %>
+    <%= d.text_field :business_name, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_phone, "Telefon" %>
-    <%= d.text_field :business_phone %>
+    <%= d.text_field :business_phone, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_mail, "Email" %>
-    <%= d.text_field :business_mail %>
+    <%= d.text_field :business_mail, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_street, "Straße Hausnr." %>
-    <%= d.text_field :business_street %>
+    <%= d.text_field :business_street, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_postalcode, "PLZ" %>
-    <%= d.text_field :business_postalcode %>
+    <%= d.text_field :business_postalcode, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :business_city, "Stadt" %>
-    <%= d.text_field :business_city %>
+    <%= d.text_field :business_city, class: 'form-control'%>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :description, "Beschreibung" %>
     <%= d.cktext_area :description %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :department, "Fachgebiet" %>
     <%= d.collection_select(
       :department_id,
@@ -43,7 +43,7 @@
     ) %>
   </div>
   <div class="actions">
-    <%= d.submit %>
+    <%= d.submit 'Speichern', class: 'btn btn-large' %>
   </div>
 
 <% end %>

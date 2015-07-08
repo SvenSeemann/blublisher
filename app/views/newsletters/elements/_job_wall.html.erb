@@ -11,7 +11,7 @@ class="panel-group" id="job-accordion" role="tablist" aria-multiselectable="true
       </a>
     </h4>
   </div>
-  <div id="collapse-<%= department.id.to_s %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="collapse-<%= department.id.to_s %>">
+  <div id="collapse-<%= department.id.to_s %>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapse-<%= department.id.to_s %>">
     <div class="panel-body" style='background-color: <%= "#{ element.category.color }"%>'>
       <% elements.each do |element| %>
       <address>
