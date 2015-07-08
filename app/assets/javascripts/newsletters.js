@@ -66,7 +66,7 @@ function place_title() {
   var img_height = img.clientHeight;
 
   var title_field = document.getElementById('newsletter-title');
-  var title_width = title_field.clientWidth
+  var title_width = title_field.clientWidth;
 
   var top = Math.floor(img_height * 0.9);
   var left = Math.floor((img_width / 2) - (title_width / 2));
