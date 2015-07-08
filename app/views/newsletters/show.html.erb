@@ -16,7 +16,7 @@
       <% end %>
     </ul>
   </div>
-  <div id="page-content" style="width: 90%; margin: 0 auto;">
+  <div id="page-content" style="min-width: 500px; max-width: 800px; margin: 0 auto;">
     <% @newsletter.news_elements.group_by(&:category).each do |category, elements| %>
     <% elements.each do |element| %>
       <div id="<%= category.name %>">
@@ -33,9 +33,9 @@
   });
 
 
-  $(function(){
+  $(document).ready(function(){
     place_title();
-    $('#page-wrapper').scrollspy({ target: '#sticky-header' })
+    $('#page-wrapper').scrollspy({ target: '#sticky-header' });
     var stickyRibbonTop = $('#sticky-header').offset().top;
 
     $(window).scroll(function(){
