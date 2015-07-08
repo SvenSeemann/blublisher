@@ -15,7 +15,7 @@
         <li role="presentation"
             style=""
         >
-          <a href="#<%= category.name %>"><%= "#{category.name}" %></a>
+          <a href="#<%= category.id + '_category' %>"><%= "#{category.name}" %></a>
         </li>
       <% end %>
     </ul>
@@ -25,7 +25,7 @@
 
     <h1 align="center"><%= category.name %></h1>
     <hr />
-    <div id="<%= category.name %>" style="margin-bottom: 50px;">
+    <div id="<%= category.id + '_category' %>" style="margin-bottom: 50px;">
       <% elements.each do |element| %>
         <div id="">
           <%= render partial: find_partial_show(element.newsletterable.class.to_s), :locals => {element: element} %>
