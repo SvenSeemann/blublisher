@@ -1,2 +1,17 @@
-<h1>EmploymentNotices#show</h1>
-<p>Find me in app/views/employment_notices/show.html.erb</p>
+<div style="border: 1px solid black;">
+  <div style="padding: 20px;">
+    <h1><%= @employment_notice.title %></h1>
+    <h3 style="padding: 10px;"><%= @employment_notice.department.name %></h3>
+    <address>
+      <strong><%= @employment_notice.business_name %></strong><br />
+      <strong><%= @employment_notice.business_street %></strong><br />
+      <strong><%= "#{@employment_notice.business_postalcode} #{@employment_notice.business_city}" %></strong><br />
+      <strong><%= "Tel: #{@employment_notice.business_phone }" %></strong><br />
+      <strong><%= "Mail: #{@employment_notice.business_mail }" %></strong>
+    </address><br />
+    <div>
+      <%= @employment_notice.description.html_safe %>
+    </div>
+    <hr />
+  </div>
+</div>
