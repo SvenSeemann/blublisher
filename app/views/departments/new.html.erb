@@ -1,11 +1,11 @@
 <h1>Fachbereich erstellen</h1>
 
 <%= form_for(@department) do |d| %>
-  <div class="field">
+  <div class="form-group">
     <%= d.label :name %>
-    <%= d.text_field :name %>
+    <%= d.text_field :name, class: 'form-control' %>
   </div>
-  <div class="actions">
-    <%= d.submit %>
+  <div class="form-group">
+    <%= d.submit 'Speichern', class: 'btn btn-large' %>
   </div>
 <% end %>
