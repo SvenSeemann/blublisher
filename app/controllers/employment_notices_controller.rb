@@ -23,6 +23,7 @@ class EmploymentNoticesController < ApplicationController
   end
 
   def show
+    @employment_notice = EmploymentNotice.find(params[:id])
   end
 
   def destroy
