@@ -1,4 +1,5 @@
-<% element.newsletterable.events.each do |event| %>
+<div style='background-color: <%= "#{element.category.color}" %>'>
+  <% element.newsletterable.events.each do |event| %>
   <div class="row">
     <div class="col-md-1" style="line-height: 100px;">
           <i class="fa fa-calendar fa-2x"></i>
@@ -11,3 +12,4 @@
     </div>
   </div>
 <% end %>
+</div>
