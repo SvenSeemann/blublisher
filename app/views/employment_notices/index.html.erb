@@ -1,5 +1,11 @@
 <% @notices.each do |n| %>
-  <h4><%= "#{n.title}" unless n.title.blank? %></h4>
-  <h4><%= "Stellenangebot von  #{n.business_name}" if n.title.blank? %></h4>
-  <strong><%= "#{n.business_name}" %></strong>
+  <%= link_to n do %>
+    <div>
+      <h4><%= "#{n.title}" unless n.title.blank? %></h4>
+      <h4>
+        <%= "Stellenangebot von  #{n.business_name}" if n.title.blank? %>
+      </h4>
+      <strong><%= "#{n.business_name}" %></strong>
+    </div>
+  <% end %>
 <% end %>
