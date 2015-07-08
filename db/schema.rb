@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707060912) do
+ActiveRecord::Schema.define(version: 20150708074617) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
-    t.string   "body"
+    t.text     "body"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150707060912) do
     t.string   "business_street"
     t.string   "business_city"
     t.string   "business_postalcode"
-    t.string   "description"
+    t.text     "description"
     t.integer  "department_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20150707060912) do
     t.datetime "starts_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "description"
+    t.text     "description"
   end
 
   create_table "job_wall_element_employment_notices", force: :cascade do |t|
