@@ -1,15 +1,15 @@
 <%= hidden_field_tag :newsletter_id, @newsletter.id %>
 
 <h1>Newsletter erstellen</h1>
-<div class="form-group">
-  <label for="newsletter-title">Titel</label>
-  <input  type="text"
+<form action="" method="" accept-charset="utf-8">
+  <div class="form-group">
+    <label for="newsletter-title">Titel</label>
+    <input  type="text"
           id="newsletter-title"
           class="form-control"
-          onchange="save_title(this.value);"
-  />
-</div>
-
+          onchange="save_title(this.value);" />
+  </div>
+</form>
 <div id="new_element_wrapper">
 
 </div>
