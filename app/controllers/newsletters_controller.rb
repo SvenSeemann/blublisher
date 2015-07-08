@@ -48,7 +48,6 @@ class NewslettersController < ApplicationController
     end
 
     newsletter = Newsletter.find(params[:newsletter_id])
-    byebug
     newsletter.news_elements << @element
     newsletter.save!
 

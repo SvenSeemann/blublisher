@@ -13,14 +13,10 @@ body {
 }
 
 #page-wrapper {
-        background: #fff;
-        -moz-box-shadow:    0 0 8px 0 rgba(0, 0, 0, 0.1);
-        -webkit-box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1);
-        box-shadow:         0 0 8px 0 rgba(0, 0, 0, 0.1);
         width: 100%;
 }
 #sticky-header {
-        background-color: #666;
+        background-color: #0094C9;
         color: #fff;
         height: 60px;
         width: 100%;
@@ -30,9 +26,6 @@ body {
         list-style-type: none;
         margin: 0 10px;
         padding: 10px 40px 15px;
-        -moz-box-shadow:    0 12px 5px -6px rgba(0, 0, 0, 0.5);
-        -webkit-box-shadow: 0 12px 5px -6px rgba(0, 0, 0, 0.5);
-        box-shadow:         0 12px 5px -6px rgba(0, 0, 0, 0.5);
 }
 
 #sticky-header ul li {
@@ -47,16 +40,25 @@ body {
         text-decoration: none;
 }
 
-#sticky-header ul li a:hover {
-        color: #c9e0f7;
-}
+#sticky-header ul > .active{
+   background: ; #7FAFCC;
+ }
+ #sticky-header ul > .active > a,
+ #sticky-header ul > .active > a:hover,
+ #sticky-header ul > .active > a:focus {
+      background: #7FAFCC;
+ }
 
 #page-content {
         padding: 0px auto;
 }
+
+.nav-tabs {
+    border-bottom: 0px;
+}
 </style>
 </head>
-<body>
+<body data-target="#sticky-header" data-spy="scroll">
 <% if notice %>
   <p class="alert alert-success"><%= notice %></p>
 <% end %>
